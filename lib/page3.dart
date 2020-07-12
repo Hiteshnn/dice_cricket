@@ -1,8 +1,10 @@
+import 'dart:math';
+
+import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
+
 import 'page2.dart';
 import 'page4.dart';
-import 'package:flutter/material.dart';
-import 'package:flutter/cupertino.dart';
-import 'dart:math';
 
 class ExtractArgumentsScreen1 extends StatefulWidget {
   static const routeName = '/extractArguments1';
@@ -34,7 +36,7 @@ class _ExtractArgumentsScreen1State extends State<ExtractArgumentsScreen1> {
           content: Text(content),
           actions: <Widget>[
             FlatButton(
-              child: Text("Close"),
+              child: Text("Okay"),
               onPressed: () {
                 Navigator.of(context).pop();
               },
@@ -43,6 +45,16 @@ class _ExtractArgumentsScreen1State extends State<ExtractArgumentsScreen1> {
         );
       },
     );
+  }
+
+  @override
+  void initState() {
+    super.initState();
+
+    // Invokes the callback method on frame loading
+    WidgetsBinding.instance.addPostFrameCallback((_) => _showDialog(
+        content:
+            'Both the players click the dice once, player 1 followed by player 2'));
   }
 
   @override
@@ -58,14 +70,14 @@ class _ExtractArgumentsScreen1State extends State<ExtractArgumentsScreen1> {
       body: Center(
         child: Column(
           children: <Widget>[
-            RaisedButton(
-              onPressed: () {
-                _showDialog(
-                    content:
-                        'Both the players click the dice once, player 1 followed by player 2');
-              },
-              child: Text('Alert!!!'),
-            ),
+//            RaisedButton(
+//              onPressed: () {
+//                _showDialog(
+//                    content:
+//                        'Both the players click the dice once, player 1 followed by player 2');
+//              },
+//              child: Text('Alert!!!'),
+//            ),
             Text(
               'Player 1',
               style: TextStyle(
