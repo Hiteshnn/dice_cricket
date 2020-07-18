@@ -8,11 +8,29 @@ import 'dart:math';
 class ExtractArgumentsScreen2 extends StatelessWidget {
   static const routeName = '/extractArguments2';
   int player_no = 0;
+  String a, b, c;
+  void go_to_page4({BuildContext context, int number}) {
+    Navigator.pushNamed(
+      context,
+      Wicketpage.routeName,
+      arguments: ScreenArguments3(
+        number,
+        a,
+        b,
+      ),
+    );
+  }
 
   @override
   Widget build(BuildContext context) {
     final ScreenArguments2 args = ModalRoute.of(context).settings.arguments;
     player_no = args.tosswinner;
+    a = args.player1name;
+    b = args.player2name;
+    if (player_no == 1)
+      c = a;
+    else
+      c = b;
     return Scaffold(
       backgroundColor: Colors.red,
       appBar: AppBar(
@@ -24,7 +42,7 @@ class ExtractArgumentsScreen2 extends StatelessWidget {
         children: <Widget>[
           Center(
             child: Text(
-              'Player $player_no won the toss',
+              '$c won the toss',
               style: TextStyle(
                 fontSize: 30.0,
                 color: Colors.white,
@@ -40,7 +58,7 @@ class ExtractArgumentsScreen2 extends StatelessWidget {
           ),
           Center(
             child: Text(
-              'Player $player_no choose bat or bowl',
+              '$c choose bat or bowl',
               style: TextStyle(
                 fontSize: 30.0,
                 color: Colors.white,
@@ -57,21 +75,9 @@ class ExtractArgumentsScreen2 extends StatelessWidget {
           FlatButton(
             onPressed: () {
               if (player_no == 1)
-                Navigator.pushNamed(
-                  context,
-                  Wicketpage.routeName,
-                  arguments: ScreenArguments3(
-                    1,
-                  ),
-                );
+                go_to_page4(context: context, number: 1);
               else
-                Navigator.pushNamed(
-                  context,
-                  Wicketpage.routeName,
-                  arguments: ScreenArguments3(
-                    2,
-                  ),
-                );
+                go_to_page4(context: context, number: 2);
             },
             child: Text(
               'BAT',
@@ -91,21 +97,9 @@ class ExtractArgumentsScreen2 extends StatelessWidget {
           FlatButton(
             onPressed: () {
               if (player_no == 1)
-                Navigator.pushNamed(
-                  context,
-                  Wicketpage.routeName,
-                  arguments: ScreenArguments3(
-                    2,
-                  ),
-                );
+                go_to_page4(context: context, number: 2);
               else
-                Navigator.pushNamed(
-                  context,
-                  Wicketpage.routeName,
-                  arguments: ScreenArguments3(
-                    1,
-                  ),
-                );
+                go_to_page4(context: context, number: 1);
             },
             child: Text(
               'BOWL',

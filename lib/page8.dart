@@ -1,34 +1,24 @@
-import 'page2.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
-import 'page8.dart';
+import 'players_name.dart';
+import 'dart:io';
 
-class Result extends StatelessWidget {
-  static const routeName = '/extractArguments5';
-  String result, p1, p2;
+class Lastpage extends StatelessWidget {
+  static const routeName = '/lastpage';
   @override
   Widget build(BuildContext context) {
-    final ScreenArguments5 args = ModalRoute.of(context).settings.arguments;
-    p1 = args.player1name;
-    p2 = args.player2name;
-    if (args.player1score < args.player2score)
-      result = '$p2 won the match';
-    else if (args.player2score < args.player1score)
-      result = '$p1 won the match';
-    else if (args.player1score == args.player2score) result = 'Match is drawn';
-
     return Scaffold(
       backgroundColor: Colors.red,
       appBar: AppBar(
         backgroundColor: Colors.red,
-        title: Text('Result'),
+        title: Text('Want to play again??'),
       ),
       body: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: <Widget>[
           Center(
             child: Text(
-              result,
+              'Do you want to play again??',
               style: TextStyle(
                 fontSize: 30.0,
                 color: Colors.white,
@@ -42,9 +32,32 @@ class Result extends StatelessWidget {
               color: Colors.red,
             ),
           ),
-          Center(
+          FlatButton(
+            onPressed: () {
+              Navigator.pushNamed(
+                context,
+                Playername.routeName,
+              );
+            },
             child: Text(
-              'Congratulations!!!',
+              'YES',
+              style: TextStyle(
+                fontSize: 30.0,
+                color: Colors.white,
+                fontWeight: FontWeight.bold,
+              ),
+            ),
+          ),
+          SizedBox(
+            height: 20.0,
+            child: Divider(
+              color: Colors.red,
+            ),
+          ),
+          FlatButton(
+            onPressed: () => exit(0),
+            child: Text(
+              'NO',
               style: TextStyle(
                 fontSize: 30.0,
                 color: Colors.white,
@@ -53,19 +66,6 @@ class Result extends StatelessWidget {
             ),
           ),
         ],
-      ),
-      floatingActionButton: FloatingActionButton(
-        backgroundColor: Colors.white,
-        onPressed: () {
-          Navigator.pushNamed(
-            context,
-            Lastpage.routeName,
-          );
-        },
-        child: Icon(
-          Icons.navigate_next,
-          color: Colors.red,
-        ),
       ),
     );
   }

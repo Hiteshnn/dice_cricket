@@ -7,12 +7,81 @@ import 'dart:math';
 
 class Wicketpage extends StatelessWidget {
   static const routeName = '/extractArguments3';
-  int a, no;
+  int a, no, sec;
+  String b,c,d,e;
+  bool player_1, player_2;
+
+  void _showDialog({BuildContext context, String content}) {
+    showDialog(
+      context: context,
+      builder: (BuildContext context) {
+        // return object of type Dialog
+        return AlertDialog(
+          title: Text("Alert!!!"),
+          content: Text(content),
+          actions: <Widget>[
+            FlatButton(
+              child: Text("Close"),
+              onPressed: () {
+                Navigator.of(context).pop();
+              },
+            ),
+          ],
+        );
+      },
+    );
+  }
+
+  RaisedButton buildKey({BuildContext context, int Number}) {
+    no = Number;
+    return RaisedButton(
+      //backgroundColor: Colors.white,
+      onPressed: () {
+        Navigator.pushNamed(
+          context,
+          Game.routeName,
+          arguments: ScreenArguments4(
+            a,
+            Number,
+            b,
+            c,
+
+          ),
+        );
+        _showDialog(
+            context: context,
+            content: '$d is batting , so $e start the game');
+      },
+      child: Text(
+        '$no',
+        style: TextStyle(
+          fontSize: 30.0,
+          color: Colors.red,
+          fontWeight: FontWeight.bold,
+        ),
+      ),
+    );
+  }
 
   @override
   Widget build(BuildContext context) {
     final ScreenArguments3 args = ModalRoute.of(context).settings.arguments;
     a = args.firstbatsman;
+    b=args.player1name;
+    c=args.player2name;
+    if (a == 1) {
+      d=b;
+      e=c;
+      sec = 2;
+      player_1 = true;
+      player_2 = false;
+    } else {
+      sec = 1;
+      d=c;
+      e=b;
+      player_2 = true;
+      player_1 = false;
+    }
     return Scaffold(
       backgroundColor: Colors.red,
       appBar: AppBar(
@@ -41,66 +110,9 @@ class Wicketpage extends StatelessWidget {
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: <Widget>[
-              RaisedButton(
-                onPressed: () {
-                  Navigator.pushNamed(
-                    context,
-                    Game.routeName,
-                    arguments: ScreenArguments4(
-                      a,
-                      1,
-                    ),
-                  );
-                },
-                child: Text(
-                  '1',
-                  style: TextStyle(
-                    fontSize: 30.0,
-                    color: Colors.red,
-                    fontWeight: FontWeight.bold,
-                  ),
-                ),
-              ),
-              RaisedButton(
-                onPressed: () {
-                  Navigator.pushNamed(
-                    context,
-                    Game.routeName,
-                    arguments: ScreenArguments4(
-                      a,
-                      2,
-                    ),
-                  );
-                },
-                child: Text(
-                  '2',
-                  style: TextStyle(
-                    fontSize: 30.0,
-                    color: Colors.red,
-                    fontWeight: FontWeight.bold,
-                  ),
-                ),
-              ),
-              RaisedButton(
-                onPressed: () {
-                  Navigator.pushNamed(
-                    context,
-                    Game.routeName,
-                    arguments: ScreenArguments4(
-                      a,
-                      3,
-                    ),
-                  );
-                },
-                child: Text(
-                  '3',
-                  style: TextStyle(
-                    fontSize: 30.0,
-                    color: Colors.red,
-                    fontWeight: FontWeight.bold,
-                  ),
-                ),
-              ),
+              buildKey(context: context, Number: 1),
+              buildKey(context: context, Number: 2),
+              buildKey(context: context, Number: 3),
             ],
           ),
           SizedBox(
@@ -112,66 +124,9 @@ class Wicketpage extends StatelessWidget {
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: <Widget>[
-              RaisedButton(
-                onPressed: () {
-                  Navigator.pushNamed(
-                    context,
-                    Game.routeName,
-                    arguments: ScreenArguments4(
-                      a,
-                      4,
-                    ),
-                  );
-                },
-                child: Text(
-                  '4',
-                  style: TextStyle(
-                    fontSize: 30.0,
-                    color: Colors.red,
-                    fontWeight: FontWeight.bold,
-                  ),
-                ),
-              ),
-              RaisedButton(
-                onPressed: () {
-                  Navigator.pushNamed(
-                    context,
-                    Game.routeName,
-                    arguments: ScreenArguments4(
-                      a,
-                      5,
-                    ),
-                  );
-                },
-                child: Text(
-                  '5',
-                  style: TextStyle(
-                    fontSize: 30.0,
-                    color: Colors.red,
-                    fontWeight: FontWeight.bold,
-                  ),
-                ),
-              ),
-              RaisedButton(
-                onPressed: () {
-                  Navigator.pushNamed(
-                    context,
-                    Game.routeName,
-                    arguments: ScreenArguments4(
-                      a,
-                      6,
-                    ),
-                  );
-                },
-                child: Text(
-                  '6',
-                  style: TextStyle(
-                    fontSize: 30.0,
-                    color: Colors.red,
-                    fontWeight: FontWeight.bold,
-                  ),
-                ),
-              ),
+              buildKey(context: context, Number: 4),
+              buildKey(context: context, Number: 5),
+              buildKey(context: context, Number: 6),
             ],
           ),
           SizedBox(
@@ -183,66 +138,9 @@ class Wicketpage extends StatelessWidget {
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: <Widget>[
-              RaisedButton(
-                onPressed: () {
-                  Navigator.pushNamed(
-                    context,
-                    Game.routeName,
-                    arguments: ScreenArguments4(
-                      a,
-                      7,
-                    ),
-                  );
-                },
-                child: Text(
-                  '7',
-                  style: TextStyle(
-                    fontSize: 30.0,
-                    color: Colors.red,
-                    fontWeight: FontWeight.bold,
-                  ),
-                ),
-              ),
-              RaisedButton(
-                onPressed: () {
-                  Navigator.pushNamed(
-                    context,
-                    Game.routeName,
-                    arguments: ScreenArguments4(
-                      a,
-                      8,
-                    ),
-                  );
-                },
-                child: Text(
-                  '8',
-                  style: TextStyle(
-                    fontSize: 30.0,
-                    color: Colors.red,
-                    fontWeight: FontWeight.bold,
-                  ),
-                ),
-              ),
-              RaisedButton(
-                onPressed: () {
-                  Navigator.pushNamed(
-                    context,
-                    Game.routeName,
-                    arguments: ScreenArguments4(
-                      a,
-                      9,
-                    ),
-                  );
-                },
-                child: Text(
-                  '9',
-                  style: TextStyle(
-                    fontSize: 30.0,
-                    color: Colors.red,
-                    fontWeight: FontWeight.bold,
-                  ),
-                ),
-              ),
+              buildKey(context: context, Number: 7),
+              buildKey(context: context, Number: 8),
+              buildKey(context: context, Number: 9),
             ],
           ),
           SizedBox(
@@ -254,26 +152,7 @@ class Wicketpage extends StatelessWidget {
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: <Widget>[
-              RaisedButton(
-                onPressed: () {
-                  Navigator.pushNamed(
-                    context,
-                    Game.routeName,
-                    arguments: ScreenArguments4(
-                      a,
-                      10,
-                    ),
-                  );
-                },
-                child: Text(
-                  '10',
-                  style: TextStyle(
-                    fontSize: 30.0,
-                    color: Colors.red,
-                    fontWeight: FontWeight.bold,
-                  ),
-                ),
-              ),
+              buildKey(context: context, Number: 10),
             ],
           ),
         ],
