@@ -1,16 +1,16 @@
-import 'package:diceecricket/page6.dart';
+import 'package:diceecricket/actualgame.dart';
 //import 'package:diceecricket/provider.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
 //import 'package:provider/provider.dart';
 import 'dart:math';
-import 'page2.dart';
+import 'screenarguments.dart';
 import 'startpage.dart';
-import 'page3.dart';
-import 'page4.dart';
-import 'page5.dart';
-import 'page7.dart';
-import 'page8.dart';
+import 'tosspage.dart';
+import 'tosswinner.dart';
+import 'wicketpage.dart';
+import 'displayresult.dart';
+import 'playagain.dart';
 import 'instructions.dart';
 import 'players_name.dart';
 

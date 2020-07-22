@@ -1,7 +1,7 @@
 import 'startpage.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
-import 'page2.dart';
+import 'screenarguments.dart';
 
 class Playername extends StatefulWidget {
   static const routeName = '/players_name';
